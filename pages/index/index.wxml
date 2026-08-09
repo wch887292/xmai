@@ -1,0 +1,133 @@
+<view class="page">
+  <!-- 顶部概览 -->
+  <view class="card hero">
+    <view class="hero-top">
+      <view>
+        <view class="title">{{greeting}} 🌙</view>
+        <view class="muted">{{todayStr}}</view>
+      </view>
+      <view class="hero-actions">
+        <view class="login-chip" bindtap="goLogin">{{loggedIn ? maskedPhone : '登录'}}</view>
+        <view class="backup-btn" bindtap="showBackup">备份</view>
+      </view>
+    </view>
+    <view class="hero-stats">
+      <view class="stat">
+        <view class="stat-num">{{lastDuration}}</view>
+        <view class="muted">昨晚时长</view>
+      </view>
+      <view class="stat">
+        <view class="stat-num">{{weekAvg}}</view>
+        <view class="muted">7日均值</view>
+      </view>
+      <view class="stat">
+        <view class="stat-num">{{streak}}</view>
+        <view class="muted">连续达标</view>
+      </view>
+    </view>
+    <view class="user-count">💤 已有 {{userCount}} 人在使用</view>
+  </view>
+
+  <!-- 能量驿站卡片 -->
+  <view class="card energy-card" bindtap="goEnergy">
+    <view class="ec-left">
+      <view class="ec-icon">{{energyIcon}}</view>
+      <view>
+        <view class="ec-num">{{energyTotal}} <text class="ec-unit">能量</text></view>
+        <view class="muted">{{energyLevel}}级 · 点此查看数据资产</view>
+      </view>
+    </view>
+    <view class="ec-arrow">›</view>
+  </view>
+
+  <!-- 云同步条（仅登录后、且已连接后端时显示） -->
+  <view wx:if="{{loggedIn && !localMode}}" class="card sync-bar">
+    <view class="sb-title">☁️ 云端同步</view>
+    <view class="sb-btns">
+      <view class="btn btn-sm" bindtap="goSyncPush">备份到云端</view>
+      <view class="btn btn-sm btn-ghost" bindtap="goSyncPull">从云端恢复</view>
+    </view>
+  </view>
+  <view wx:if="{{loggedIn && localMode}}" class="card sync-bar local">
+    <view class="sb-title">📱 本地模式</view>
+    <view class="sb-muted">数据仅存本机，未连接服务器。部署后端并开启开关后将自动支持云端同步。</view>
+  </view>
+
+  <!-- 今天要处理 -->
+  <view class="card">
+    <view class="subtitle">今天要处理</view>
+    <view wx:if="{{tasks.length === 0}}" class="muted" style="padding:16rpx 0;">🎉 今天都搞定啦，早点休息～</view>
+    <view wx:for="{{tasks}}" wx:key="text" class="task {{item.urgent ? 'task-red' : ''}}">
+      <view class="task-dot"></view>
+      <view class="task-text">{{item.text}}</view>
+      <view class="btn task-btn" data-type="{{item.type}}" bindtap="handleTask">{{item.btn}}</view>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="card quick">
+    <view class="quick-item" bindtap="goRecord">
+      <view class="quick-ico">📝</view><view class="quick-label">记睡眠</view>
+    </view>
+    <view class="quick-item" bindtap="goRoutine">
+      <view class="quick-ico">⏰</view><view class="quick-label">作息打卡</view>
+    </view>
+    <view class="quick-item" bindtap="goDashboard">
+      <view class="quick-ico">📊</view><view class="quick-label">看数据</view>
+    </view>
+    <view class="quick-item" bindtap="goTimer">
+      <view class="quick-ico">🧘</view><view class="quick-label">助眠</view>
+    </view>
+  </view>
+
+  <!-- AI 睡眠助手入口（门控占位） -->
+  <view class="card ai-entry {{aiEnabled ? '' : 'ai-locked'}}" bindtap="goAi">
+    <view class="ai-emoji">🤖</view>
+    <view class="ai-text">
+      <view class="ai-name">AI 睡眠助手</view>
+      <view class="muted">{{aiEnabled ? '已开放，点此对话' : '待算法备案后合规上线'}}</view>
+    </view>
+    <view class="ai-badge">{{aiEnabled ? '开放' : '合规中'}}</view>
+  </view>
+
+  <!-- 底部：协议入口 -->
+  <view class="foot">
+    <text class="link" bindtap="goAgreement">用户协议</text>
+    <text class="foot-dot">·</text>
+    <text class="link" bindtap="goPrivacy">隐私政策</text>
+  </view>
+
+  <!-- 备份弹层 -->
+  <view wx:if="{{showBackup}}" class="mask" bindtap="hideBackup">
+    <view class="sheet" catchtap="noop">
+      <view class="subtitle">数据备份</view>
+      <view class="muted" style="margin-bottom:16rpx;">当前：睡眠记录 {{recCount}} 条 · 作息打卡 {{checkinCount}} 条。导出会复制全部数据 JSON（可粘贴到微信/备忘录保存）；导入时把备份 JSON 粘贴到下方即可恢复。数据仅存于本机。</view>
+      <view class="row">
+        <view class="btn" bindtap="exportData">导出并复制</view>
+        <view class="btn btn-ghost" bindtap="importMode">导入恢复</view>
+      </view>
+      <textarea wx:if="{{importModeOn}}" class="imp" value="{{importText}}" bindinput="onImportInput" placeholder="在此粘贴备份 JSON"></textarea>
+      <view wx:if="{{importModeOn}}" class="btn btn-block" bindtap="doImport">确认恢复</view>
+      <view class="divider"></view>
+      <view class="row">
+        <view class="btn btn-ghost" bindtap="resetSample">恢复示例</view>
+        <view class="btn btn-danger" bindtap="clearAll">清空全部</view>
+      </view>
+      <view class="btn btn-ghost btn-block" bindtap="hideBackup">关闭</view>
+    </view>
+  </view>
+
+  <!-- 隐私授权弹窗 -->
+  <view wx:if="{{privacyVisible}}" class="mask" bindtap="closePrivacy">
+    <view class="sheet privacy-sheet" catchtap="noop">
+      <view class="subtitle">隐私授权</view>
+      <view class="muted" style="margin-bottom:20rpx; line-height:1.7;">
+        使用本小程序前，请阅读并同意
+        <text class="link" bindtap="openPrivacyContract">{{privacyContractName}}</text>。
+        我们会依据隐私政策收集、使用你的睡眠与作息数据（仅存储于本机，不上传服务器）。
+      </view>
+      <button class="btn btn-block agree-btn" open-type="agreePrivacyAuthorization" bindagreeprivacyauthorization="handleAgree">同意并继续</button>
+      <view class="btn btn-ghost btn-block" bindtap="closePrivacy">暂不使用</view>
+    </view>
+  </view>
+</view>

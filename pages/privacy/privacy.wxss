@@ -1,0 +1,7 @@
+.doc { padding: 24rpx; }
+.doc-h { font-size: 38rpx; font-weight: 700; text-align: center; }
+.doc-update { text-align: center; color: #9a93b5; font-size: 22rpx; margin: 10rpx 0 20rpx; line-height: 1.6; }
+.sec { margin-bottom: 28rpx; }
+.h { display: block; font-size: 30rpx; font-weight: 700; color: #4834a6; margin-bottom: 10rpx; }
+.p { display: block; font-size: 26rpx; color: #4a4560; line-height: 1.8; margin-bottom: 8rpx; }
+.em { color: #e74c3c; font-weight: 600; }

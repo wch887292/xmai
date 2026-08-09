@@ -1,0 +1,17 @@
+.stars { display: flex; align-items: center; }
+.star { font-size: 48rpx; color: #d9d4ec; margin-right: 8rpx; }
+.star-on { color: #f6b93b; }
+
+.rec-item {
+  display: flex; align-items: center;
+  padding: 22rpx 0; border-top: 1rpx solid #f0eef7;
+}
+.rec-main { flex: 1; }
+.rec-date { font-weight: 600; font-size: 28rpx; margin-bottom: 4rpx; }
+.rec-ops { display: flex; gap: 14rpx; }
+.op {
+  width: 60rpx; height: 60rpx; border-radius: 50%;
+  background: #efeafc; color: #6c5ce7;
+  display: flex; align-items: center; justify-content: center; font-size: 26rpx;
+}
+.op-del { background: #fdecea; color: #e74c3c; }

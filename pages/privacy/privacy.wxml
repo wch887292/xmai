@@ -1,0 +1,28 @@
+<view class="page doc">
+  <view class="doc-h">星眠AI · 隐私政策</view>
+  <view class="doc-update">最近更新：2026-08-09 · 本政策依据《个人信息保护法》等编写</view>
+
+  <view class="sec"><text class="h">一、我们收集的信息</text>
+  <text class="p">1. 你主动填写的睡眠数据：上床时间、入睡时间、起床时间、睡眠质量评分（1–5 星）、备注文字。</text>
+  <text class="p">2. 由上述数据衍生的统计：睡眠时长、连续打卡天数、能量值（用于「能量驿站」激励展示）。</text>
+  <text class="p">3. 上述睡眠与作息数据属于《个人信息保护法》项下的<text class="em">敏感个人信息（健康信息）</text>，我们按最高标准保护。</text></view>
+
+  <view class="sec"><text class="h">二、信息如何存储</text>
+  <text class="p">默认情况下，所有数据<text class="em">仅存储于你当前设备本地</text>（使用微信小程序本地存储），<text class="em">不上传任何服务器</text>，开发者无法读取。</text>
+  <text class="p">仅在以下情形会发生数据传出：(a) 你主动使用「导出」功能，将数据复制到剪贴板自行保存；(b) 未来你在隐私政策更新并明确授权后，开启「跨设备同步 / 数据贡献」，相关传输将另行征得你的单独同意并说明用途。</text></view>
+
+  <view class="sec"><text class="h">三、我们如何使用信息</text>
+  <text class="p">数据仅用于在本机为你提供：睡眠记录、作息打卡、趋势看板、助眠计时、能量驿站展示。我们不用于广告投放、不向第三方出售或共享你的个人数据。</text></view>
+
+  <view class="sec"><text class="h">四、你的权利</text>
+  <text class="p">你可通过小程序首页「备份」功能随时导出全部数据（JSON），或一键清空全部本地数据。你有权撤回授权，撤回后停止使用相关功能即可，本地数据可由你自行清空。</text></view>
+
+  <view class="sec"><text class="h">五、未成年人</text>
+  <text class="p">本产品主要面向成年用户。若你为未成年人，请在监护人指导下使用。</text></view>
+
+  <view class="sec"><text class="h">六、联系方式</text>
+  <text class="p">如对本政策有疑问，可通过小程序内反馈渠道联系我们。</text></view>
+
+  <view class="sec"><text class="h">七、政策变更</text>
+  <text class="p">我们将适时更新本政策，重大变更会于小程序内提示。本政策与微信《隐私保护指引》共同构成隐私保护体系。</text></view>
+</view>

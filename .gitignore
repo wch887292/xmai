@@ -1,0 +1,26 @@
+# ===== 依赖 =====
+node_modules/
+miniprogram_npm/
+
+# ===== 环境变量 / 密钥（绝不可入库）=====
+.env
+.env.*
+!.env.example
+
+# ===== 运行时数据 =====
+data/
+server/data/
+*.log
+
+# ===== 微信开发者工具本地文件 =====
+.tea/
+project.private.config.json
+
+# ===== 编辑器 / OS =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ===== 本地工作记忆（不入库，仅本机）=====
+.workbuddy/

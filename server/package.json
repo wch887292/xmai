@@ -1,0 +1,16 @@
+{
+  "name": "xingmian-ai-server",
+  "version": "1.0.0",
+  "description": "星眠AI 后端服务：微信手机号登录 + 睡眠数据同步（Express + JSON 文件存储，零原生依赖，适配 CloudBase 云托管）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "DEV_MODE=true node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

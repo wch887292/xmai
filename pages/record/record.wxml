@@ -1,0 +1,61 @@
+<view class="page">
+  <view class="card">
+    <view class="subtitle">{{editingId ? '编辑记录' : '添加睡眠记录'}}</view>
+
+    <view class="field">
+      <view class="field-label">日期</view>
+      <picker mode="date" value="{{date}}" bindchange="onDate">
+        <view class="field-control">{{date || '选择日期'}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="field-label">上床时间</view>
+      <picker mode="time" value="{{bedTime}}" bindchange="onBed">
+        <view class="field-control">{{bedTime}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="field-label">入睡时间</view>
+      <picker mode="time" value="{{sleepTime}}" bindchange="onSleep">
+        <view class="field-control">{{sleepTime}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="field-label">起床时间</view>
+      <picker mode="time" value="{{wakeTime}}" bindchange="onWake">
+        <view class="field-control">{{wakeTime}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="field-label">睡眠质量</view>
+      <view class="stars">
+        <view wx:for="{{[1,2,3,4,5]}}" wx:key="*this"
+              class="star {{quality>=item?'star-on':''}}"
+              data-q="{{item}}" bindtap="pickQuality">{{quality>=item?'★':'☆'}}</view>
+        <text class="muted" style="margin-left:12rpx;">{{quality}}/5</text>
+      </view>
+    </view>
+    <view class="field">
+      <view class="field-label">备注（可选）</view>
+      <input class="field-control" value="{{note}}" bindinput="onNote" placeholder="例如：睡前运动了" />
+    </view>
+
+    <view class="btn btn-block" bindtap="save">保存</view>
+  </view>
+
+  <view class="card">
+    <view class="subtitle">历史记录（{{records.length}}）</view>
+    <view wx:for="{{records}}" wx:key="id" class="rec-item">
+      <view class="rec-main">
+        <view class="rec-date">{{item.date}}</view>
+        <view class="muted">睡 {{item.sleepTime}} → 起 {{item.wakeTime}} · {{item.dispDur}} · {{item.quality}}★</view>
+        <view wx:if="{{item.note}}" class="muted" style="margin-top:4rpx;">{{item.note}}</view>
+      </view>
+      <view class="rec-ops">
+        <view class="op" data-id="{{item.id}}" bindtap="edit">改</view>
+        <view class="op op-del" data-id="{{item.id}}" bindtap="remove">删</view>
+      </view>
+    </view>
+    <view wx:if="{{records.length===0}}" class="muted">还没有记录，上面添加一条吧。</view>
+  </view>
+</view>

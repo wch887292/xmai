@@ -1,0 +1,30 @@
+.page { padding-bottom: 60rpx; }
+
+.top { padding: 80rpx 40rpx 40rpx; text-align: center; }
+.logo { font-size: 96rpx; }
+.app-name { font-size: 44rpx; font-weight: 700; color: #3a2e5c; margin-top: 12rpx; }
+.slogan { font-size: 26rpx; color: #9a93b5; margin-top: 12rpx; }
+
+.phone-big {
+  font-size: 40rpx; font-weight: 600; color: #3a2e5c;
+  letter-spacing: 4rpx; margin: 10rpx 0 4rpx;
+}
+
+.consent { display: flex; align-items: flex-start; gap: 16rpx; margin: 8rpx 0; }
+.check {
+  width: 36rpx; height: 36rpx; border-radius: 50%;
+  border: 2rpx solid #c9c2e6; flex: none; text-align: center;
+  line-height: 32rpx; color: #fff; font-size: 24rpx;
+}
+.check.checked { background: #6c5ce7; border-color: #6c5ce7; }
+.consent-text { font-size: 24rpx; color: #6b6390; line-height: 1.6; }
+
+.sm { font-size: 22rpx; }
+.btn-disabled { opacity: 0.5; }
+
+.foot { text-align: center; margin-top: 30rpx; }
+.dot { color: #c9c2e6; margin: 0 12rpx; }
+
+/* getPhoneNumber 按钮：重置微信原生 button 默认样式 */
+button.btn-block { margin-top: 20rpx; font-size: 30rpx; line-height: 2.6; }
+button.btn-block::after { border: none; }

@@ -1,0 +1,56 @@
+<view class="page">
+  <!-- 目标设置 -->
+  <view class="card">
+    <view class="subtitle">我的作息目标</view>
+    <view class="field">
+      <view class="field-label">目标上床时间</view>
+      <picker mode="time" value="{{targetBed}}" bindchange="onTargetBed">
+        <view class="field-control">{{targetBed}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="field-label">目标起床时间</view>
+      <picker mode="time" value="{{targetWake}}" bindchange="onTargetWake">
+        <view class="field-control">{{targetWake}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="field-label">宽松阈值（分钟，±容差）</view>
+      <input class="field-control" type="number" value="{{toleranceMin}}" bindinput="onTol" placeholder="30" />
+    </view>
+    <view class="btn btn-block" bindtap="saveConfig">保存目标</view>
+  </view>
+
+  <!-- 今日打卡 -->
+  <view class="card">
+    <view class="subtitle">今日打卡</view>
+    <view class="field">
+      <view class="field-label">今天上床时间</view>
+      <picker mode="time" value="{{todayBed}}" bindchange="onBed">
+        <view class="field-control">{{todayBed || '未填写'}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="field-label">今天起床时间</view>
+      <picker mode="time" value="{{todayWake}}" bindchange="onWake">
+        <view class="field-control">{{todayWake || '未填写'}}</view>
+      </picker>
+    </view>
+    <view wx:if="{{checkedToday}}" class="result {{onTime ? 'green' : 'red'}}">
+      今日状态：{{onTime ? '已达标 ✅' : '未达标 ⚠️'}}
+    </view>
+    <view class="btn btn-block" bindtap="checkIn">打卡</view>
+  </view>
+
+  <!-- 连续天数 + 近7天 -->
+  <view class="card">
+    <view class="subtitle">连续达标：<text class="green">{{streak}}</text> 天</view>
+    <view class="week">
+      <view wx:for="{{recent}}" wx:key="ds" class="day">
+        <view class="dot {{item.onTime===true?'dot-on':(item.onTime===false?'dot-off':'dot-none')}}"></view>
+        <view class="muted">{{item.label}}</view>
+      </view>
+    </view>
+    <view class="muted" style="margin-top:12rpx;">绿=达标，红=未达标，灰=未打卡</view>
+  </view>
+</view>

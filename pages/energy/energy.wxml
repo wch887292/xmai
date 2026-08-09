@@ -1,0 +1,74 @@
+<view class="page">
+  <!-- 能量总览 -->
+  <view class="card hero">
+    <view class="hero-top">
+      <view>
+        <view class="big">{{icon}} {{total}}</view>
+        <view class="level">能量 · {{level}}级</view>
+      </view>
+      <view class="tree">{{icon}}</view>
+    </view>
+    <view class="bar">
+      <view class="bar-in" style="width:{{progress}}%"></view>
+    </view>
+    <view class="muted" style="margin-top:12rpx;">
+      <block wx:if="{{nextLevel}}">距「{{nextIcon}} {{nextLevel}}」还需 {{toNext}} 能量</block>
+      <block wx:else>已达最高等级 🎉</block>
+    </view>
+  </view>
+
+  <!-- 数据资产 -->
+  <view class="card">
+    <view class="subtitle">我的数据资产</view>
+    <view class="grid">
+      <view class="g-item">
+        <view class="g-num">{{asset.nights}}</view>
+        <view class="muted">累计记录夜数</view>
+      </view>
+      <view class="g-item">
+        <view class="g-num">{{asset.healthyNights}}</view>
+        <view class="muted">健康时长夜数</view>
+      </view>
+      <view class="g-item">
+        <view class="g-num">{{asset.avgQuality}}</view>
+        <view class="muted">平均质量分</view>
+      </view>
+      <view class="g-item">
+        <view class="g-num">{{asset.onTimeRate}}%</view>
+        <view class="muted">打卡达标率</view>
+      </view>
+    </view>
+    <view class="muted" style="margin-top:16rpx; line-height:1.7;">
+      你持续记录睡眠，就是在积累属于自己的健康数据资产。越多越完整的记录，能量增长越快。
+    </view>
+  </view>
+
+  <!-- 能量获取账本 -->
+  <view class="card">
+    <view class="subtitle">能量账本</view>
+    <view wx:if="{{ledger.length === 0}}" class="muted" style="padding:16rpx 0;">还没有能量，去记录睡眠或打卡吧～</view>
+    <view wx:for="{{ledger}}" wx:key="date" class="led">
+      <view class="led-date">{{item.date}}</view>
+      <view class="led-reason">{{item.reason}}</view>
+      <view class="led-delta">+{{item.delta}}</view>
+    </view>
+  </view>
+
+  <!-- 扩展点 -->
+  <view class="card">
+    <view class="subtitle">数据价值拓展</view>
+    <view class="muted" style="line-height:1.7; margin-bottom:20rpx;">
+      未来你可授权把匿名聚合数据用于科研或产品优化，换取专属权益。当前为<text class="red">本地模式</text>，数据不出本机。
+    </view>
+    <view class="btn btn-block {{backendEnabled ? '' : 'btn-ghost'}}" bindtap="onContribute">
+      {{backendEnabled ? '贡献数据换权益' : '贡献数据（待合规开放）'}}
+    </view>
+  </view>
+
+  <!-- 底部：协议入口 -->
+  <view class="foot">
+    <text class="link" bindtap="goAgreement">用户协议</text>
+    <text class="dot">·</text>
+    <text class="link" bindtap="goPrivacy">隐私政策</text>
+  </view>
+</view>

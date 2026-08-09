@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精选三条 · 疲劳失眠耗竭智能体开发深度研究报告</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --card-2: #1c2230;
+    --accent: #7c6cff;
+    --accent-l: #b4a7ff;
+    --teal: #2dd4bf;
+    --orange: #f59e0b;
+    --green: #34d399;
+    --red: #f87171;
+    --text: #e6edf3;
+    --dim: #8b949e;
+    --faint: #6e7681;
+    --border: #30363d;
+    --r: 12px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); line-height:1.8; }
+
+  .hero { background:linear-gradient(135deg,#161b22 0%,#1e1545 40%,#161b22 100%); padding:56px 32px 44px; text-align:center; border-bottom:1px solid var(--border); }
+  .hero h1 { font-size:30px; font-weight:800; background:linear-gradient(90deg,#b4a7ff,#2dd4bf,#f59e0b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; letter-spacing:1px; }
+  .hero .sub { font-size:14px; color:var(--dim); max-width:720px; margin:0 auto; }
+  .hero .picks { margin-top:24px; display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+  .pick-badge { padding:8px 20px; border-radius:24px; font-size:14px; font-weight:600; border:1px solid; }
+  .pick-1 { color:var(--accent-l); border-color:rgba(124,108,255,0.4); background:rgba(124,108,255,0.08); }
+  .pick-2 { color:var(--teal); border-color:rgba(45,212,191,0.4); background:rgba(45,212,191,0.08); }
+  .pick-3 { color:var(--orange); border-color:rgba(245,158,11,0.4); background:rgba(245,158,11,0.08); }
+
+  .wrap { max-width:1180px; margin:0 auto; padding:0 24px; }
+  .stitle { font-size:22px; font-weight:700; margin:48px 0 24px; padding-left:14px; border-left:4px solid var(--accent); }
+  .stitle.teal { border-color:var(--teal); }
+  .stitle.orange { border-color:var(--orange); }
+  .stitle.gray { border-color:var(--faint); }
+
+  .pblock { background:var(--card); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; margin-bottom:32px; }
+  .phead { padding:28px 32px; border-bottom:1px solid var(--border); display:flex; align-items:flex-start; gap:20px; }
+  .pnum { flex-shrink:0; width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:800; color:#fff; }
+  .phead-1 .pnum { background:linear-gradient(135deg,#7c6cff,#b4a7ff); }
+  .phead-2 .pnum { background:linear-gradient(135deg,#2dd4bf,#14b8a6); }
+  .phead-3 .pnum { background:linear-gradient(135deg,#f59e0b,#d97706); }
+  .phead-info { flex:1; }
+  .pname { font-size:20px; font-weight:700; margin-bottom:4px; }
+  .ptag { font-size:13px; color:var(--dim); }
+  .ptype { flex-shrink:0; padding:6px 16px; border-radius:20px; font-size:12px; font-weight:600; }
+  .ptype-1 { background:rgba(124,108,255,0.12); color:var(--accent-l); border:1px solid rgba(124,108,255,0.3); }
+  .ptype-2 { background:rgba(45,212,191,0.12); color:var(--teal); border:1px solid rgba(45,212,191,0.3); }
+  .ptype-3 { background:rgba(245,158,11,0.12); color:var(--orange); border:1px solid rgba(245,158,11,0.3); }
+
+  .pbody { padding:28px 32px; }
+  .pbody h4 { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:12px; margin-top:24px; }
+  .pbody h4:first-child { margin-top:0; }
+  .h4-1 { color:var(--accent-l); }
+  .h4-2 { color:var(--teal); }
+  .h4-3 { color:var(--orange); }
+  .h4-g { color:var(--dim); }
+  .pbody p, .pbody li { font-size:14px; color:var(--dim); line-height:1.9; }
+  .pbody ul { list-style:none; padding:0; }
+  .pbody ul li { padding-left:20px; position:relative; margin-bottom:8px; }
+  .pbody ul li::before { content:'▸'; position:absolute; left:0; }
+  .pbody-1 ul li::before { color:var(--accent); }
+  .pbody-2 ul li::before { color:var(--teal); }
+  .pbody-3 ul li::before { color:var(--orange); }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  @media (max-width:768px){ .two-col{grid-template-columns:1fr;} }
+
+  .mstats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:8px; }
+  .mstat { background:var(--card-2); border:1px solid var(--border); border-radius:10px; padding:16px; text-align:center; }
+  .mstat .val { font-size:22px; font-weight:800; margin-bottom:4px; }
+  .mstat .lbl { font-size:11px; color:var(--faint); }
+  .val-1 { color:var(--accent-l); }
+  .val-2 { color:var(--teal); }
+  .val-3 { color:var(--orange); }
+
+  .comp-table { width:100%; border-collapse:collapse; font-size:13px; margin:8px 0 8px; }
+  .comp-table th { background:var(--card-2); padding:12px 10px; text-align:left; font-weight:600; color:var(--text); border-bottom:1px solid var(--border); white-space:nowrap; }
+  .comp-table td { padding:10px; border-bottom:1px solid var(--border); color:var(--dim); vertical-align:top; }
+  .comp-table tr:last-child td { border-bottom:none; }
+  .comp-table .cn { color:var(--text); font-weight:600; }
+  .comp-table .us { color:var(--green); font-weight:600; }
+
+  .arch { background:var(--card-2); border:1px solid var(--border); border-radius:10px; padding:24px; margin:8px 0; }
+  .arch-layer { display:flex; gap:12px; margin-bottom:12px; align-items:stretch; }
+  .arch-layer:last-child { margin-bottom:0; }
+  .arch-label { flex-shrink:0; width:88px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; border-radius:8px; padding:8px; text-align:center; }
+  .al-1 { background:rgba(124,108,255,0.1); color:var(--accent-l); }
+  .al-2 { background:rgba(45,212,191,0.1); color:var(--teal); }
+  .al-3 { background:rgba(245,158,11,0.1); color:var(--orange); }
+  .al-4 { background:rgba(52,211,153,0.1); color:var(--green); }
+  .al-g { background:rgba(139,148,158,0.1); color:var(--dim); }
+  .arch-modules { display:flex; gap:8px; flex:1; flex-wrap:wrap; }
+  .arch-mod { background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:8px; padding:10px 14px; font-size:12px; color:var(--dim); flex:1; min-width:120px; }
+  .arch-mod strong { color:var(--text); display:block; margin-bottom:2px; font-size:13px; }
+
+  .mvp-phases { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+  .mvp-phase { background:var(--card-2); border:1px solid var(--border); border-radius:10px; padding:18px; position:relative; }
+  .mvp-phase .phase-num { position:absolute; top:-10px; left:16px; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2px 12px; font-size:11px; font-weight:700; }
+  .mvp-phase-1 .phase-num { color:var(--accent-l); border-color:rgba(124,108,255,0.4); }
+  .mvp-phase-2 .phase-num { color:var(--teal); border-color:rgba(45,212,191,0.4); }
+  .mvp-phase-3 .phase-num { color:var(--orange); border-color:rgba(245,158,11,0.4); }
+  .mvp-phase h5 { font-size:14px; margin:8px 0 8px; color:var(--text); }
+  .mvp-phase p { font-size:12px; color:var(--dim); }
+
+  .tech-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; }
+  .tech-item { background:var(--card-2); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .tech-item .tcat { font-size:11px; color:var(--faint); margin-bottom:4px; text-transform:uppercase; letter-spacing:1px; }
+  .tech-item .tval { font-size:14px; color:var(--text); font-weight:600; }
+  .tech-item .tdesc { font-size:12px; color:var(--dim); margin-top:4px; }
+
+  .rev-card { background:var(--card-2); border:1px solid var(--border); border-radius:10px; padding:20px 24px; margin-bottom:12px; }
+  .rev-card h5 { font-size:15px; color:var(--text); margin-bottom:10px; }
+  .rev-row { display:flex; gap:12px; flex-wrap:wrap; }
+  .rev-tag { background:rgba(124,108,255,0.08); border:1px solid rgba(124,108,255,0.25); color:var(--accent-l); padding:6px 14px; border-radius:16px; font-size:13px; }
+  .rev-tag.t2 { background:rgba(45,212,191,0.08); border-color:rgba(45,212,191,0.25); color:var(--teal); }
+  .rev-tag.t3 { background:rgba(245,158,11,0.08); border-color:rgba(245,158,11,0.25); color:var(--orange); }
+
+  .risk-box { background:var(--card-2); border:1px solid var(--border); border-left:4px solid var(--red); border-radius:8px; padding:16px 20px; margin-bottom:12px; }
+  .risk-box .rl { font-size:13px; font-weight:700; color:var(--red); margin-bottom:6px; }
+  .risk-box .ri { font-size:13px; color:var(--dim); }
+  .risk-box .rm { font-size:13px; color:var(--green); margin-top:6px; }
+
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:16px; }
+  .sum-card { background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:24px; }
+  .sum-card h4 { font-size:16px; margin-bottom:12px; }
+  .sum-card.s1 h4 { color:var(--accent-l); }
+  .sum-card.s2 h4 { color:var(--teal); }
+  .sum-card.s3 h4 { color:var(--orange); }
+  .sum-card ul { list-style:none; padding:0; }
+  .sum-card li { padding-left:18px; position:relative; font-size:13px; color:var(--dim); margin-bottom:8px; }
+  .sum-card li::before { content:'•'; position:absolute; left:0; }
+  .s1 li::before { color:var(--accent); }
+  .s2 li::before { color:var(--teal); }
+  .s3 li::before { color:var(--orange); }
+
+  .footnote { font-size:12px; color:var(--faint); margin-top:12px; padding:12px 16px; background:var(--card-2); border-radius:8px; border:1px dashed var(--border); }
+  .footer { text-align:center; padding:40px 24px; color:var(--faint); font-size:12px; border-top:1px solid var(--border); margin-top:48px; }
+
+  .callout { background:rgba(124,108,255,0.06); border:1px solid rgba(124,108,255,0.25); border-radius:10px; padding:18px 22px; margin:16px 0; font-size:14px; color:var(--dim); }
+  .callout strong { color:var(--text); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>精选三条 · 智能体开发深度研究报告</h1>
+  <p class="sub">从「疲劳·失眠·耗竭」10 条创意方案中，精选 3 条最适合以 AI 智能体 / 应用形态落地的方向，完成市场量化、竞品矩阵、智能体架构、MVP 定义、技术栈与商业模式推演。</p>
+  <div class="picks">
+    <span class="pick-badge pick-1">① 安心眠 · CBT-I 睡眠智能体</span>
+    <span class="pick-badge pick-2">② 倦怠雷达 · 企业倦怠预警 SaaS</span>
+    <span class="pick-badge pick-3">③ 能量银行 · AI 日间能量管理体</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="callout">
+    <strong>精选逻辑：</strong>用户要求聚焦「创意智能体或应用开发」，因此优先筛选<strong>纯软件 / 轻硬件、AI 智能体可承载核心价值</strong>的方案。排除重硬件依赖（深眠舱、脑波声场、夜行者、微复原站）与需线下服务的方案，保留三条最契合「应用 + 智能体」形态、且市场验证度最高的方向：① CBT-I 数字疗法（个人端，监管红利）；② 企业倦怠预警（B2B，付费力强）；③ AI 日间能量管理（增量蓝海，可穿戴数据接入即可启动）。
+  </div>
+
+  <!-- ============ 产品一 ============ -->
+  <h2 class="stitle">① 安心眠 · 反数据焦虑 CBT-I 睡眠智能体</h2>
+  <div class="pblock">
+    <div class="phead phead-1">
+      <div class="pnum">01</div>
+      <div class="phead-info">
+        <div class="pname">安心眠 — 反数据焦虑的 CBT-I 睡眠智能体</div>
+        <div class="ptag">定位：以认知行为疗法（CBT-I）为内核的 AI 失眠干预智能体，不依赖监测硬件、不制造数据焦虑，用对话重建睡眠认知。</div>
+      </div>
+      <div class="ptype ptype-1">软件 APP / AI 智能体</div>
+    </div>
+    <div class="pbody pbody-1">
+
+      <h4 class="h4-1">一、市场机会量化</h4>
+      <div class="mstats">
+        <div class="mstat"><div class="val val-1">3亿+</div><div class="lbl">中国睡眠障碍人群</div></div>
+        <div class="mstat"><div class="val val-1">83.2%</div><div class="lbl">23-40岁失眠占比</div></div>
+        <div class="mstat"><div class="val val-1">70%</div><div class="lbl">失眠者首选"非药物"干预</div></div>
+        <div class="mstat"><div class="val val-1">$60亿+</div><div class="lbl">全球数字疗法(失眠)潜在市场</div></div>
+      </div>
+      <p>CBT-I（认知行为失眠疗法）被美国睡眠医学会（AASM）列为<strong>慢性失眠一线疗法</strong>，有效率 70-80%，优于安眠药且无依赖。但线下 CBT-I 单次费用 800-2000 元、需 6-8 周、专业医师稀缺，供需严重错配。数字 CBT-I（dCBT-I）将成本降至 1/20，美国 Sleepio / Big Health 已被 NHS（英国医保）与多家保险公司采购。中国 dCBT-I 仍处早期，<strong>监管红利窗口打开</strong>：2024 年国家药监局将「失眠数字疗法」纳入医疗器械软件（SaMD）分类，先发者可抢占「持证数字疗法」心智。</p>
+
+      <h4 class="h4-1">二、竞品矩阵</h4>
+      <table class="comp-table">
+        <tr><th>竞品</th><th>形态</th><th>核心能力</th><th>短板</th></tr>
+        <tr><td class="cn">Sleepio / Big Health</td><td>dCBT-I App</td><td>结构化 6 周 CBT-I、随机对照证据、保险报销</td><td>纯英文、无中文、无本土化认知适配</td></tr>
+        <tr><td class="cn">Somryst（Pear）</td><td>处方数字疗法</td><td>FDA 处方、医师开方</td><td>需处方、进入门槛高、中国不可用</td></tr>
+        <tr><td class="cn">潮汐 / 小睡眠</td><td>内容助眠 App</td><td>白噪音、冥想、睡眠故事</td><td>"哄睡"内容、无 CBT-I 干预、难改认知</td></tr>
+        <tr><td class="cn">蘑菇心理 / 壹心理</td><td>心理咨询平台</td><td>真人咨询师、心理测评</td><td>贵、排期慢、无标准化失眠方案</td></tr>
+        <tr><td class="us">安心眠（本方案）</td><td>AI CBT-I 智能体</td><td>对话式 CBT-I、反数据焦虑、本土化认知重构</td><td>需积累临床证据与 SaMD 资质</td></tr>
+      </table>
+
+      <h4 class="h4-1">三、AI 智能体架构</h4>
+      <div class="arch">
+        <div class="arch-layer"><div class="arch-label al-1">交互层</div><div class="arch-modules">
+          <div class="arch-mod"><strong>睡眠日记 Agent</strong>自然语言记录入睡/觉醒/情绪</div>
+          <div class="arch-mod"><strong>睡前对话 Agent</strong>引导放松、处理"上床焦虑"</div>
+        </div></div>
+        <div class="arch-layer"><div class="arch-label al-1">干预层</div><div class="arch-modules">
+          <div class="arch-mod"><strong>CBT-I 对话 Agent</strong>刺激控制、睡眠限制、认知重构话术库</div>
+          <div class="arch-mod"><strong>认知识别 Agent</strong>NLP 识别"灾难化思维"自动介入</div>
+        </div></div>
+        <div class="arch-layer"><div class="arch-label al-2">决策层</div><div class="arch-modules">
+          <div class="arch-mod"><strong>个性化引擎</strong>按 ISI 量表分级推送 6 周计划</div>
+          <div class="arch-mod"><strong>反焦虑模块</strong>主动弱化数字、以"感受"替代"分数"</div>
+        </div></div>
+        <div class="arch-layer"><div class="arch-label al-g">基座</div><div class="arch-modules">
+          <div class="arch-mod"><strong>LLM + 临床知识库</strong>基于 AASM/CBT-I 指南的安全护栏</div>
+          <div class="arch-mod"><strong>安全拦截</strong>抑郁/自伤风险转人工 & 危机资源</div>
+        </div></div>
+      </div>
+
+      <h4 class="h4-1">四、MVP 定义（4-6 周可上线）</h4>
+      <div class="mvp-phases">
+        <div class="mvp-phase mvp-phase-1"><div class="phase-num">MVP-1</div><h5>睡眠日记 + ISI 测评</h5><p>微信小程序：自然语言记睡眠，自动算失眠严重度，输出 1 页报告。零硬件依赖，验证留存。</p></div>
+        <div class="mvp-phase mvp-phase-1"><div class="phase-num">MVP-2</div><h5>对话式 CBT-I 第一周</h5><p>上线"刺激控制 + 睡眠限制"对话脚本，AI 每日跟进完成情况。</p></div>
+        <div class="mvp-phase mvp-phase-1"><div class="phase-num">MVP-3</div><h5>反焦虑版首页</h5><p>去掉连续打卡分数，改"今日睡眠感受"轻量化反馈，检验焦虑下降。</p></div>
+      </div>
+
+      <h4 class="h4-1">五、技术栈建议</h4>
+      <div class="tech-grid">
+        <div class="tech-item"><div class="tcat">对话</div><div class="tval">LLM + RAG</div><div class="tdesc">国内可用大模型 API，CBT-I 知识库检索增强</div></div>
+        <div class="tech-item"><div class="tcat">前端</div><div class="tval">微信小程序</div><div class="tdesc">免安装、获客成本低、适合 MVP 验证</div></div>
+        <div class="tech-item"><div class="tcat">NLP</div><div class="tval">认知扭曲识别</div><div class="tdesc">规则 + 微调分类器识别灾难化思维</div></div>
+        <div class="tech-item"><div class="tcat">合规</div><div class="tval">SaMD 路径</div><div class="tdesc">按二类医疗器械软件申报数字疗法</div></div>
+      </div>
+
+      <h4 class="h4-1">六、商业模式推演</h4>
+      <div class="rev-card">
+        <h5>三层收费结构</h5>
+        <div class="rev-row">
+          <span class="rev-tag">C 端：免费测评 + ¥39/月 会员（完整 6 周计划）</span>
+          <span class="rev-tag t2">B 端：医院/诊所 SaaS 分诊，按处方量抽成</span>
+          <span class="rev-tag t3">支付方：保险公司团采（对标 Sleepio 报销模式）</span>
+        </div>
+      </div>
+      <p><strong>关键假设：</strong>获客成本 < ¥80，会员月留存 > 45%，12 周完课率 > 50% 即可跑正单位经济；持证后可切入商保报销，LTV 提升 3-5 倍。</p>
+
+      <h4 class="h4-1">七、风险评估</h4>
+      <div class="risk-box"><div class="rl">风险 ①：医疗合规 / SaMD 资质周期长（6-12 月）</div><div class="ri">未持证前不得宣称"治疗"，仅作"睡眠改善工具"。</div><div class="rm">缓解：MVP 阶段以健康管理定位，同步启动二类证申报；与持证诊所合作分诊绕过资质瓶颈。</div></div>
+      <div class="risk-box"><div class="rl">风险 ②：LLM 对话安全（错误建议 / 心理危机）</div><div class="ri">睡眠问题常伴抑郁，AI 误判风险高。</div><div class="rm">缓解：强制安全护栏 + 危机关键词转人工 + 7×24 危机资源卡。</div></div>
+      <div class="risk-box"><div class="rl">风险 ③：完课率与付费转化</div><div class="ri">CBT-I 需 6 周坚持，用户易流失。</div><div class="rm">缓解：游戏化微任务 + 智能体"陪伴感" + 企业团采提升完课约束。</div></div>
+
+    </div>
+  </div>
+
+  <!-- ============ 产品二 ============ -->
+  <h2 class="stitle teal">② 倦怠雷达 · 企业团队倦怠预警 AI SaaS</h2>
+  <div class="pblock">
+    <div class="phead phead-2">
+      <div class="pnum">02</div>
+      <div class="phead-info">
+        <div class="pname">倦怠雷达 — 企业团队倦怠预警 AI SaaS</div>
+        <div class="ptag">定位：接入办公/协作数据流，用 AI 预测团队与个人倦怠风险，提前推送干预，替代"用了等于没用"的传统 EAP。</div>
+      </div>
+      <div class="ptype ptype-2">B2B SaaS / AI</div>
+    </div>
+    <div class="pbody pbody-2">
+
+      <h4 class="h4-2">一、市场机会量化</h4>
+      <div class="mstats">
+        <div class="mstat"><div class="val val-2">¥1.1万亿</div><div class="lbl">中国年职业倦怠相关损耗</div></div>
+        <div class="mstat"><div class="val val-2">3-5%</div><div class="lbl">传统 EAP 实际使用率</div></div>
+        <div class="mstat"><div class="val val-2">76%</div><div class="lbl">企业愿为员工心理健康投入</div></div>
+        <div class="mstat"><div class="val val-2">¥15-30</div><div class="lbl">人均/月 SaaS 订阅空间</div></div>
+      </div>
+      <p>WHO 已将"职业倦怠"纳入 ICD-11 疾病分类。麦肯锡测算职业倦怠导致离职与低效，单员工年损耗可达年薪的 1/3。企业普遍采购 EAP（员工帮助计划）却<strong>使用率仅 3-5%</strong>——痛点不是"没预算"而是"无感知、无预警、无数据"。倦怠雷达切入的是<strong>可量化、可预警、可汇报</strong>的管理刚需，HR 与业务负责人愿为"看得见的风险"付费。</p>
+
+      <h4 class="h4-2">二、竞品矩阵</h4>
+      <table class="comp-table">
+        <tr><th>竞品</th><th>形态</th><th>核心能力</th><th>短板</th></tr>
+        <tr><td class="cn">传统 EAP 厂商</td><td>热线/咨询</td><td>心理咨询热线、转介</td><td>被动、使用率低、无数据看板</td></tr>
+        <tr><td class="cn">Microsoft Viva Insights</td><td>协作分析</td><td>会议过载/专注时间分析</td><td>通用、无"倦怠"语义、需 M365 生态</td></tr>
+        <tr><td class="cn">钉钉/飞书 考勤</td><td>OA 模块</td><td>打卡、加班统计</td><td>仅工时、无心理/风险维度</td></tr>
+        <tr><td class="cn">海外 Wellbeing SaaS</td><td>调查工具</td><td>定期问卷、eNPS</td><td>滞后、主观、难实时预警</td></tr>
+        <tr><td class="us">倦怠雷达（本方案）</td><td>AI 预警 SaaS</td><td>多源信号融合 + 风险预测 + 干预闭环</td><td>需解决隐私与数据合规信任</td></tr>
+      </table>
+
+      <h4 class="h4-2">三、AI 智能体架构</h4>
+      <div class="arch">
+        <div class="arch-layer"><div class="arch-label al-2">数据层</div><div class="arch-modules">
+          <div class="arch-mod"><strong>协作信号</strong>会议时长/夜间消息/异步负载</div>
+          <div class="arch-mod"><strong>轻量问卷</strong>每周 2 题微调研（PSS 简化）</div>
+          <div class="arch-mod"><strong>匿名聚合</strong>个人数据不出端、仅团队级上报</div>
+        </div></div>
+        <div class="arch-layer"><div class="arch-label al-2">预测层</div><div class="arch-modules">
+          <div class="arch-mod"><strong>风险预测 Agent</strong>时序模型输出个人/团队倦怠分</div>
+          <div class="arch-mod"><strong>归因 Agent</strong>定位高负载来源（会议/需求/轮班）</div>
+        </div></div>
+        <div class="arch-layer"><div class="arch-label al-3">干预层</div><div class="arch-modules">
+          <div class="arch-mod"><strong>管理者建议 Agent</strong>给 Leader 的排班/负载调整建议</div>
+          <div class="arch-mod"><strong>员工干预 Agent</strong>推微恢复：调休提醒/断连建议</div>
+        </div></div>
+        <div class="arch-layer"><div class="arch-label al-g">看板</div><div class="arch-modules">
+          <div class="arch-mod"><strong>HR 仪表盘</strong>团队级风险热力图、趋势、预警</div>
+          <div class="arch-mod"><strong>合规护栏</strong>去标识化、最小权限、审计日志</div>
+        </div></div>
+      </div>
+
+      <h4 class="h4-2">四、MVP 定义（6-8 周）</h4>
+      <div class="mvp-phases">
+        <div class="mvp-phase mvp-phase-2"><div class="phase-num">MVP-1</div><h5>问卷 + 看板</h5><p>周度微调研 + 团队风险热力图，先验证 HR 愿意看、愿为数据付费。</p></div>
+        <div class="mvp-phase mvp-phase-2"><div class="phase-num">MVP-2</div><h5>协作信号接入</h5><p>只读接入飞书/钉钉/企微，自动算"夜间负载""会议密度"等客观指标。</p></div>
+        <div class="mvp-phase mvp-phase-2"><div class="phase-num">MVP-3</div><h5>预警 + 干预建议</h5><p>高风险自动预警 Leader，推送排班/断连建议，形成闭环。</p></div>
+      </div>
+
+      <h4 class="h4-2">五、技术栈建议</h4>
+      <div class="tech-grid">
+        <div class="tech-item"><div class="tcat">集成</div><div class="tval">飞书/钉钉/企微 OpenAPI</div><div class="tdesc">只读权限拉取协作元数据</div></div>
+        <div class="tech-item"><div class="tcat">模型</div><div class="tval">时序 + 梯度提升</div><div class="tdesc">XGBoost/LightGBM 做风险分级</div></div>
+        <div class="tech-item"><div class="tcat">智能体</div><div class="tval">LLM 建议生成</div><div class="tdesc">把风险翻译成管理者可读建议</div></div>
+        <div class="tech-item"><div class="tcat">合规</div><div class="tval">隐私计算</div><div class="tdesc">联邦/去标识，个人数据不出企业</div></div>
+      </div>
+
+      <h4 class="h4-2">六、商业模式推演</h4>
+      <div class="rev-card">
+        <h5>按人头订阅 + 增值</h5>
+        <div class="rev-row">
+          <span class="rev-tag t2">基础版：¥15/人/月（看板 + 问卷）</span>
+          <span class="rev-tag t2">专业版：¥30/人/月（信号接入 + 预警）</span>
+          <span class="rev-tag t3">增服务：组织诊断报告 ¥3-8 万/次</span>
+        </div>
+      </div>
+      <p><strong>关键假设：</strong>以 200 人企业为例，专业版年费 ≈ ¥7.2 万；若帮企业降低 1 人离职（替代成本 ≈ 年薪 1 倍），ROI 即回正。<strong>切入路径：</strong>先免费试用 30 天团队看板 → HR 看到风险热力图 → 采购专业版。</p>
+
+      <h4 class="h4-2">七、风险评估</h4>
+      <div class="risk-box"><div class="rl">风险 ①：员工隐私信任危机（"被监控"反弹）</div><div class="ri">信号采集易引发抵触，甚至工会/舆情风险。</div><div class="rm">缓解：默认匿名聚合、个人数据不出端、明确"不用于考核"、员工可关闭采集。</div></div>
+      <div class="risk-box"><div class="rl">风险 ②：数据合规（个保法 / 跨境）</div><div class="ri">健康/心理数据属敏感个人信息。</div><div class="rm">缓解：本地化部署选项、签署数据处理协议（DPA）、最小必要采集。</div></div>
+      <div class="risk-box"><div class="rl">风险 ③：预测准确性 & 误报</div><div class="ri">误报高负载致过度干预，反噬体验。</div><div class="rm">缓解：置信度阈值 + 人工复核 + 持续校准，先服务团队级而非个人追责。</div></div>
+
+    </div>
+  </div>
+
+  <!-- ============ 产品三 ============ -->
+  <h2 class="stitle orange">③ 能量银行 · AI 日间能量管理智能体</h2>
+  <div class="pblock">
+    <div class="phead phead-3">
+      <div class="pnum">03</div>
+      <div class="phead-info">
+        <div class="pname">能量银行 — AI 日间能量管理智能体</div>
+        <div class="ptag">定位：把"精力"当作可量化、可预算、可补充的货币，用 AI 帮用户在白天主动管理疲劳、调度咖啡因与微恢复，避免夜里"崩溃式耗竭"。</div>
+      </div>
+      <div class="ptype ptype-3">软件 APP / AI 智能体</div>
+    </div>
+    <div class="pbody pbody-3">
+
+      <h4 class="h4-3">一、市场机会量化</h4>
+      <div class="mstats">
+        <div class="mstat"><div class="val val-3">68%</div><div class="lbl">职场人午后精力"断崖"</div></div>
+        <div class="mstat"><div class="val val-3">¥千亿</div><div class="lbl">功能性饮品/提神市场</div></div>
+        <div class="mstat"><div class="val val-3">0</div><div class="lbl">主流"日间精力管理"App</div></div>
+        <div class="mstat"><div class="val val-3">2.3亿</div><div class="lbl">中国可穿戴设备活跃用户</div></div>
+      </div>
+      <p>市场呈现明显割裂：夜间睡眠产品极度内卷，<strong>日间精力管理几乎空白</strong>。而真实痛点是"白天累、靠咖啡硬撑、晚上睡不着"的恶性循环。能量银行切的是<strong>增量蓝海</strong>：不与睡眠 App 正面竞争，而是补齐"白天"这一环，并用"能量货币化"的游戏化隐喻降低行为改变门槛。可穿戴（Apple Watch / 华为 / 小米）普及提供了现成数据接口，<strong>无需自建硬件即可启动</strong>。</p>
+
+      <h4 class="h4-3">二、竞品矩阵</h4>
+      <table class="comp-table">
+        <tr><th>竞品</th><th>形态</th><th>核心能力</th><th>短板</th></tr>
+        <tr><td class="cn">Whoop / Oura</td><td>可穿戴</td><td>HRV/恢复分数、睡眠</td><td>重硬件、贵、偏"夜间报告"无日间调度</td></tr>
+        <tr><td class="cn">咖啡类 App</td><td>工具</td><td>咖啡因代谢倒计时</td><td>单点、无精力全局管理</td></tr>
+        <tr><td class="cn">番茄钟 / 时间块</td><td>效率工具</td><td>专注计时</td><td>不管精力波动、机械排程</td></tr>
+        <tr><td class="cn">冥想 App</td><td>内容</td><td>呼吸/正念</td><td>碎片化、无主动调度</td></tr>
+        <tr><td class="us">能量银行（本方案）</td><td>AI 精力管理体</td><td>能量预算 + 咖啡因调度 + 微恢复推荐</td><td>依赖可穿戴数据质量</td></tr>
+      </table>
+
+      <h4 class="h4-3">三、AI 智能体架构</h4>
+      <div class="arch">
+        <div class="arch-layer"><div class="arch-label al-3">接入层</div><div class="arch-modules">
+          <div class="arch-mod"><strong>可穿戴同步</strong>HRV/活动/睡眠/步数</div>
+          <div class="arch-mod"><strong>日程接入</strong>日历高耗能会议识别</div>
+          <div class="arch-mod"><strong>咖啡因日志</strong>饮品摄入自动/手动记录</div>
+        </div></div>
+        <div class="arch-layer"><div class="arch-label al-3">预测层</div><div class="arch-modules">
+          <div class="arch-mod"><strong>能量预测 Agent</strong>按昼夜节律 + HRV 推全天能量曲线</div>
+          <div class="arch-mod"><strong>咖啡因调度 Agent</strong>算代谢半衰期，建议最佳饮用窗口</div>
+        </div></div>
+        <div class="arch-layer"><div class="arch-label al-4">调度层</div><div class="arch-modules">
+          <div class="arch-mod"><strong>微恢复推荐</strong>低谷前推 5 分钟呼吸/散步/小憩</div>
+          <div class="arch-mod"><strong>任务调度</strong>高耗能任务排能量高峰、低峰排恢复</div>
+        </div></div>
+        <div class="arch-layer"><div class="arch-label al-g">反馈</div><div class="arch-modules">
+          <div class="arch-mod"><strong>能量账本</strong>可视化"收入（睡眠）/支出（工作）/补充（恢复）"</div>
+          <div class="arch-mod"><strong>夜间复盘</strong>反推今日耗竭原因，优化明日</div>
+        </div></div>
+      </div>
+
+      <h4 class="h4-3">四、MVP 定义（4-6 周）</h4>
+      <div class="mvp-phases">
+        <div class="mvp-phase mvp-phase-3"><div class="phase-num">MVP-1</div><h5>能量账本 + 咖啡因</h5><p>手动记睡眠/咖啡/任务，AI 出"今日能量曲线"与最佳咖啡窗口。零硬件依赖验证钩子。</p></div>
+        <div class="mvp-phase mvp-phase-3"><div class="phase-num">MVP-2</div><h5>可穿戴接入</h5><p>接入 HealthKit / 华为健康，自动拉 HRV 与睡眠，能量预测更准。</p></div>
+        <div class="mvp-phase mvp-phase-3"><div class="phase-num">MVP-3</div><h5>智能体提醒</h5><p>低谷前主动推"微恢复"，高峰前提醒"安排深度工作"。</p></div>
+      </div>
+
+      <h4 class="h4-3">五、技术栈建议</h4>
+      <div class="tech-grid">
+        <div class="tech-item"><div class="tcat">健康数据</div><div class="tval">HealthKit / 华为健康</div><div class="tdesc">跨平台可穿戴聚合</div></div>
+        <div class="tech-item"><div class="tcat">模型</div><div class="tval">节律 + 代谢模型</div><div class="tdesc"> circadian + 咖啡因药代动力学</div></div>
+        <div class="tech-item"><div class="tcat">智能体</div><div class="tval">LLM 个性化教练</div><div class="tdesc">把数据翻译成行动建议</div></div>
+        <div class="tech-item"><div class="tcat">推送</div><div class="tval">本地定时 + 云函数</div><div class="tdesc">低谷前主动触达</div></div>
+      </div>
+
+      <h4 class="h4-3">六、商业模式推演</h4>
+      <div class="rev-card">
+        <h5>免费 + 订阅 + 联名</h5>
+        <div class="rev-row">
+          <span class="rev-tag t3">C 端：免费版 + ¥25/月 高级预测</span>
+          <span class="rev-tag t3">硬件联动：与手环/咖啡品牌联名分成</span>
+          <span class="rev-tag t2">B 端 Lite：团队能量看板（与倦怠雷达互补）</span>
+        </div>
+      </div>
+      <p><strong>关键假设：</strong>与"倦怠雷达"形成个人端↔企业端互补矩阵——个人版管能量、企业版管团队风险，可打包销售。<strong>护城河：</strong>能量账本行为习惯沉淀后迁移成本高，且越多数据预测越准（数据飞轮）。</p>
+
+      <h4 class="h4-3">七、风险评估</h4>
+      <div class="risk-box"><div class="rl">风险 ①：可穿戴数据质量参差</div><div class="ri">不同品牌 HRV 口径不一，预测偏差。</div><div class="rm">缓解：多源交叉校准 + 允许用户校正 + 不依赖单指标做强结论。</div></div>
+      <div class="risk-box"><div class="rl">风险 ②：医疗边界（"提神"暗示功效）</div><div class="ri">涉及咖啡因调度，需避免"治疗"宣称。</div><div class="rm">缓解：定位"精力管理工具"，咖啡因仅作生活建议，不涉功效。</div></div>
+      <div class="risk-box"><div class="rl">风险 ③：用户坚持度</div><div class="ri">需长期记录才有价值，冷启动难。</div><div class="rm">缓解：可穿戴自动同步降低输入成本 + "能量曲线"即时正反馈钩子。</div></div>
+
+    </div>
+  </div>
+
+  <!-- ============ 三方案对比总结 ============ -->
+  <h2 class="stitle gray">三条方案横向对比与推进建议</h2>
+  <div class="summary-grid">
+    <div class="sum-card s1">
+      <h4>① 安心眠（个人 · 数字疗法）</h4>
+      <ul>
+        <li><strong>确定性最高</strong>：CBT-I 有强临床证据，监管红利窗口</li>
+        <li><strong>壁垒</strong>：SaMD 资质 + 临床数据积累</li>
+        <li><strong>变现</strong>：C 端订阅 + 商保报销，LTV 高</li>
+        <li><strong>风险</strong>：资质周期、对话安全</li>
+        <li><strong>适合</strong>：有医疗/临床资源、追求长期壁垒的团队</li>
+      </ul>
+    </div>
+    <div class="sum-card s2">
+      <h4>② 倦怠雷达（企业 · B2B SaaS）</h4>
+      <ul>
+        <li><strong>付费力最强</strong>：HR 预算明确，ROI 易算</li>
+        <li><strong>壁垒</strong>：组织数据网络效应 + 合规信任</li>
+        <li><strong>变现</strong>：按人/月 + 诊断增服，回款快</li>
+        <li><strong>风险</strong>：隐私信任、个保法合规</li>
+        <li><strong>适合</strong>：有 B 端销售、做 SaaS 的团队</li>
+      </ul>
+    </div>
+    <div class="sum-card s3">
+      <h4>③ 能量银行（个人 · 蓝海）</h4>
+      <ul>
+        <li><strong>差异化最强</strong>：日间精力管理几乎无人做</li>
+        <li><strong>壁垒</strong>：能量账本习惯 + 数据飞轮</li>
+        <li><strong>变现</strong>：订阅 + 硬件/咖啡联名</li>
+        <li><strong>风险</strong>：数据质量、冷启动</li>
+        <li><strong>适合</strong>：想做轻量 APP、快速验证的团队</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>组合打法建议：</strong>②③ 可组成「个人能量管理 ↔ 企业倦怠预警」互补矩阵，个人端养数据、企业端出收入；① 作为长期合规壁垒型资产单独推进。若资源有限优先做 <strong>② 倦怠雷达</strong>（B2B 回款最快、最易验证单位经济），或 <strong>③ 能量银行</strong>（C 端 MVP 最轻、4 周可上线）。
+  </div>
+
+  <div class="footnote">
+    数据来源：艾媒咨询《中国睡眠经济行业研究报告》、美国睡眠医学会（AASM）CBT-I 指南、WHO ICD-11、麦肯锡职业倦怠研究报告、Big Health / Sleepio 公开资料，以及公开新闻与行业研报（2024-2026）。文中市场数据为公开资料整理与合理推算，<strong>部分为企业端潜在规模估算，非精确财报数据，落地前需补充一手调研与样本验证</strong>。本文件为「调研结论」初稿，建议创建「调研结论评审」事项并邀请产品/市场/业务负责人确认后进入需求设计。
+  </div>
+
+</div>
+
+<div class="footer">疲劳·失眠·耗竭智能体开发深度研究 · 精选三条方案 · 2026-08-09 · 市场调研协同助手产出</div>
+
+</body>
+</html>

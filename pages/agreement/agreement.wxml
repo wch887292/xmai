@@ -1,0 +1,26 @@
+<view class="page doc">
+  <view class="doc-h">星眠AI · 用户协议</view>
+  <view class="doc-update">最近更新：2026-08-09</view>
+
+  <view class="sec"><text class="h">一、产品性质</text>
+  <text class="p">本小程序（星眠AI / 安心眠）是一款「睡眠健康管理工具」，用于记录睡眠作息、辅助养成良好睡眠习惯。本产品<text class="em">不构成医疗建议、不提供诊断或治疗服务</text>，不能替代医生、药物或专业医疗处置。如有睡眠疾病或长期失眠，请及时就医。</text></view>
+
+  <view class="sec"><text class="h">二、数据收集与使用</text>
+  <text class="p">我们仅在本机收集你主动填写的睡眠相关数据，包括：上床/入睡/起床时间、睡眠时长（由你填写的时间计算得出）、睡眠质量评分（1–5 星）、备注。以及为「能量驿站」功能统计的打卡与记录行为。</text>
+  <text class="p">默认情况下，上述数据<text class="em">仅存储于你的设备本地</text>，不上传任何服务器。我们不会在未经你明确授权的情况下上传或共享你的个人数据。</text></view>
+
+  <view class="sec"><text class="h">三、用户权利义务</text>
+  <text class="p">你有权随时通过「备份」功能导出或清空你的全部数据。你应保证所填写内容真实、合法，不得利用本产品传播违法违规或侵害他人权益的信息。</text>
+  <text class="p">因本产品为本地工具，数据丢失风险由用户自行承担，建议定期导出备份。</text></view>
+
+  <view class="sec"><text class="h">四、免责声明</text>
+  <text class="p">本产品按「现状」提供，不对其准确性、适用性作任何明示或默示担保。因使用本产品产生的任何后果，开发者不承担赔偿责任。本产品展示的「能量」「等级」等均为激励性虚拟计量，<text class="em">不代表真实医学指标或收益承诺</text>。</text></view>
+
+  <view class="sec"><text class="h">五、协议变更</text>
+  <text class="p">我们可能适时更新本协议，更新后以小程序内展示版本为准。</text></view>
+
+  <view class="sec"><text class="h">六、联系我们</text>
+  <text class="p">如对本协议有疑问，可通过小程序内反馈渠道与我们联系。</text></view>
+
+  <view class="btn btn-block btn-ghost" bindtap="onAgree">我已阅读</view>
+</view>

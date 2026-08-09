@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/record/record",
+    "pages/routine/routine",
+    "pages/dashboard/dashboard",
+    "pages/timer/timer",
+    "pages/energy/energy",
+    "pages/agreement/agreement",
+    "pages/privacy/privacy",
+    "pages/ai/ai",
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#3a2e5c",
+    "navigationBarTitleText": "星眠AI",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f2f0f7"
+  },
+  "tabBar": {
+    "color": "#9a93b5",
+    "selectedColor": "#6c5ce7",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "今天" },
+      { "pagePath": "pages/record/record", "text": "记录" },
+      { "pagePath": "pages/routine/routine", "text": "打卡" },
+      { "pagePath": "pages/dashboard/dashboard", "text": "看板" },
+      { "pagePath": "pages/energy/energy", "text": "能量驿站" }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "__usePrivacyCheck__": true,
+  "sitemapLocation": "sitemap.json"
+}

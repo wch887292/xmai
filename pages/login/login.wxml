@@ -1,0 +1,37 @@
+<view class="page">
+  <view class="top">
+    <view class="logo">🌙</view>
+    <view class="app-name">星眠AI</view>
+    <view class="slogan">安睡每一夜，积蓄每一分能量</view>
+  </view>
+
+  <!-- 已登录态 -->
+  <view wx:if="{{loggedIn}}" class="card">
+    <view class="subtitle">当前账号</view>
+    <view class="phone-big">{{maskedPhone}}</view>
+    <view class="muted" style="margin-bottom:20rpx;">{{localMode ? '当前为本地模式，数据仅存本机，未连接服务器。' : '已登录（云端同步已开启）。'}}</view>
+    <view class="btn btn-block btn-danger" bindtap="logout">退出登录</view>
+  </view>
+
+  <!-- 未登录：微信手机号一键登录 -->
+  <view wx:else class="card">
+    <view class="subtitle">手机号一键登录</view>
+    <view class="muted" style="margin-bottom:16rpx;">使用微信绑定的手机号快捷登录，用于跨设备同步你的睡眠数据。手机号仅安全存储于服务端，本机不留存明文。</view>
+
+    <view class="consent" bindtap="toggleAgree">
+      <view class="check {{agreed ? 'checked' : ''}}">{{agreed ? '✓' : ''}}</view>
+      <view class="consent-text">我已阅读并同意<text class="link" catchtap="goAgreement">《用户协议》</text>与<text class="link" catchtap="goPrivacy">《隐私政策》</text></view>
+    </view>
+
+    <button class="btn btn-block {{agreed ? '' : 'btn-disabled'}}" open-type="getPhoneNumber" bindgetphonenumber="onGetPhone">微信手机号一键登录</button>
+    <view wx:if="{{!backendEnabled}}" class="muted sm" style="margin-top:10rpx;color:#e67e22;">⚠️ 本地模式：暂不连接服务器，登录后数据仅存本机（部署后端并开启开关后自动连回）。</view>
+    <view wx:else class="muted sm" style="margin-top:10rpx;">登录即表示授权我们依据隐私政策处理你的手机号与睡眠数据。</view>
+  </view>
+
+  <!-- 底部：协议入口 -->
+  <view class="foot">
+    <text class="link" bindtap="goAgreement">用户协议</text>
+    <text class="dot">·</text>
+    <text class="link" bindtap="goPrivacy">隐私政策</text>
+  </view>
+</view>

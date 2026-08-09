@@ -1,0 +1,24 @@
+.timer-page { text-align: center; }
+.circle-wrap { display: flex; justify-content: center; padding: 60rpx 0 30rpx; }
+.circle {
+  width: 420rpx; height: 420rpx; border-radius: 50%;
+  background: linear-gradient(135deg, #6c5ce7 0%, #4834a6 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #fff; box-shadow: 0 16rpx 40rpx rgba(84, 60, 180, 0.3);
+}
+.circle.breath { animation: breath 9s ease-in-out infinite; }
+@keyframes breath {
+  0%, 100% { transform: scale(0.86); }
+  50% { transform: scale(1.08); }
+}
+.time { font-size: 88rpx; font-weight: 700; letter-spacing: 2rpx; }
+.circle .muted { color: rgba(255,255,255,0.8); margin-top: 8rpx; }
+
+.presets { display: flex; justify-content: center; gap: 20rpx; margin: 20rpx 0 30rpx; }
+.preset {
+  padding: 16rpx 36rpx; border-radius: 999rpx;
+  background: #efeafc; color: #6c5ce7; font-size: 28rpx;
+}
+.preset-on { background: #6c5ce7; color: #fff; }
+
+.tip { text-align: left; margin-top: 30rpx; }

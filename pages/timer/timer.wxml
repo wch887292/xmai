@@ -1,0 +1,25 @@
+<view class="page timer-page">
+  <view class="circle-wrap">
+    <view class="circle {{breathing ? 'breath' : ''}}">
+      <view class="time">{{remainText}}</view>
+      <view class="muted">{{running ? '跟着呼吸，慢慢放松' : '准备好了就开始'}}</view>
+    </view>
+  </view>
+
+  <view class="presets">
+    <view wx:for="{{presets}}" wx:key="*this"
+          class="preset {{minutes===item && !running ? 'preset-on' : ''}}"
+          data-m="{{item}}" bindtap="choose">{{item}}分钟</view>
+  </view>
+
+  <view class="row" style="padding:0 24rpx; gap:20rpx;">
+    <view wx:if="{{!running}}" class="btn" style="flex:1;" bindtap="start">开始</view>
+    <view wx:else class="btn btn-ghost" style="flex:1;" bindtap="pause">暂停</view>
+    <view class="btn btn-ghost" style="flex:1;" bindtap="reset">重置</view>
+  </view>
+
+  <view class="card tip">
+    <view class="subtitle">4-7-8 呼吸法</view>
+    <view class="muted">吸气 4 秒 → 屏息 7 秒 → 呼气 8 秒，循环几组，帮助身体进入睡眠状态。</view>
+  </view>
+</view>

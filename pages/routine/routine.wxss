@@ -1,0 +1,11 @@
+.result {
+  text-align: center; font-size: 30rpx; font-weight: 600;
+  padding: 16rpx; border-radius: 16rpx; margin-bottom: 16rpx;
+  background: #f6f4fc;
+}
+.week { display: flex; justify-content: space-between; margin-top: 12rpx; }
+.day { display: flex; flex-direction: column; align-items: center; gap: 8rpx; }
+.dot { width: 28rpx; height: 28rpx; border-radius: 50%; }
+.dot-on { background: #27ae60; }
+.dot-off { background: #e74c3c; }
+.dot-none { background: #e3def5; }

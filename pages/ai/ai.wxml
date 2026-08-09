@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="card hero">
+    <view class="ai-ico">🤖</view>
+    <view class="ai-title">AI 睡眠助手</view>
+    <view class="ai-tag {{enabled ? 'on' : 'off'}}">{{enabled ? '已开放' : '合规上线中'}}</view>
+  </view>
+
+  <view class="card">
+    <view class="subtitle">功能说明</view>
+    <view class="muted" style="line-height:1.8;">
+      AI 睡眠助手计划为你提供睡眠卫生科普、CBT-I 知识、个性化作息建议等对话能力。
+      为严守合规，本功能<text class="em">不提供诊断、用药或治疗处方</text>，所有输出均经内容审核与免责标注。
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="subtitle">上线前置条件</view>
+    <view wx:for="{{preconditions}}" wx:key="*this" class="pre">
+      <text class="pre-dot">●</text><text class="pre-t">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="subtitle">备案后上线范围</view>
+    <view class="muted" style="line-height:1.8;">{{scope}}</view>
+  </view>
+
+  <view class="card {{enabled ? '' : 'locked'}}">
+    <view class="btn btn-block {{enabled ? '' : 'btn-ghost'}}" bindtap="onTryUse">
+      {{enabled ? '开始对话' : '暂未开放 · 待算法备案'}}
+    </view>
+  </view>
+</view>

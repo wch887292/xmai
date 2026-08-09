@@ -1,0 +1,13 @@
+.hero { background: linear-gradient(135deg, #6c5ce7 0%, #a55eea 100%); color: #fff; text-align: center; }
+.ai-ico { font-size: 90rpx; }
+.ai-title { font-size: 36rpx; font-weight: 700; margin-top: 8rpx; }
+.ai-tag { display: inline-block; margin-top: 16rpx; font-size: 24rpx; padding: 6rpx 24rpx; border-radius: 999rpx; background: rgba(255,255,255,0.22); }
+.ai-tag.on { background: #00b894; }
+.ai-tag.off { background: rgba(255,255,255,0.22); }
+.em { color: #e74c3c; font-weight: 600; }
+
+.pre { display: flex; align-items: flex-start; padding: 12rpx 0; }
+.pre-dot { color: #6c5ce7; font-size: 20rpx; margin-right: 14rpx; margin-top: 8rpx; }
+.pre-t { flex: 1; font-size: 26rpx; line-height: 1.6; }
+
+.locked { opacity: 0.96; }

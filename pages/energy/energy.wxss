@@ -1,0 +1,25 @@
+.hero {
+  background: linear-gradient(135deg, #00b894 0%, #0984a6 100%);
+  color: #fff;
+}
+.hero-top { display: flex; justify-content: space-between; align-items: center; }
+.hero .big { font-size: 56rpx; font-weight: 800; }
+.hero .level { font-size: 26rpx; opacity: 0.9; margin-top: 6rpx; }
+.hero .tree { font-size: 80rpx; opacity: 0.85; }
+.hero .muted { color: rgba(255,255,255,0.85); }
+
+.bar { height: 16rpx; border-radius: 999rpx; background: rgba(255,255,255,0.25); margin-top: 24rpx; overflow: hidden; }
+.bar-in { height: 100%; background: #fff; border-radius: 999rpx; transition: width .4s; }
+
+.grid { display: flex; flex-wrap: wrap; }
+.g-item { width: 50%; box-sizing: border-box; padding: 16rpx 0; text-align: center; }
+.g-num { font-size: 40rpx; font-weight: 700; color: #0984a6; }
+
+.led { display: flex; align-items: center; padding: 18rpx 0; border-top: 1rpx solid #f0eef7; }
+.led-date { width: 180rpx; font-size: 26rpx; color: #6b6390; }
+.led-reason { flex: 1; font-size: 26rpx; }
+.led-delta { color: #00b894; font-weight: 700; }
+
+.foot { text-align: center; padding: 30rpx 0 60rpx; }
+.foot .link { color: #6c5ce7; font-size: 24rpx; }
+.foot .dot { color: #ccc; margin: 0 16rpx; }
