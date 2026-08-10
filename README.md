@@ -2,11 +2,17 @@
 
 > 面向失眠 / 过劳人群的个人睡眠健康管家，配套企业端「倦怠雷达」与数据资产「能量驿站」，形成 **个人养数据 → 匿名聚合 → 企业出收入** 的产品矩阵。
 
-[![微信小程序](https://img.shields.io/badge/平台-微信小程序-07C160)](https://mp.weixin.qq.com/)
-[![后端](https://img.shields.io/badge/后端-Node%20%2B%20Express-339933)](./server)
-[![部署](https://img.shields.io/badge/部署-腾讯云%20CVM%20%2F%20CloudBase-blue)](./server/DEPLOY-CVM.md)
-[![最后提交](https://img.shields.io/github/last-commit/wch887292/xmai)](https://github.com/wch887292/xmai/commits/main)
-[![许可证](https://img.shields.io/badge/授权-商用%20请联合作者-orange)]()
+![微信小程序](https://img.shields.io/badge/平台-微信小程序-07C160)
+
+![后端](https://img.shields.io/badge/后端-Node%20%2B%20Express-339933)
+
+![部署](https://img.shields.io/badge/部署-腾讯云%20CVM%20%2F%20CloudBase-blue)
+
+![最后提交](https://img.shields.io/github/last-commit/wch887292/xmai)
+
+![许可证](https://img.shields.io/badge/授权-商用%20请联合作者-orange)
+
+
 
 ---
 
@@ -18,17 +24,23 @@
 - **可私有部署的后端**：零原生依赖的 Node + Express 服务（JSON 文件存储），自带腾讯云 CVM 一键部署脚本，数据握在自己手里。
 - **本地模式 ↔ 真后端无缝切换**：前端按一个开关（`config/compliance.js`）即可在「纯本地」与「手机号真登录 + 云端同步」之间切换，业务代码不动。
 
-> 📷 截图占位：建议在 `docs/screenshots/` 放 4–6 张小程序界面图，GitHub 会直接渲染在 README 顶部，大幅提升点击率。
+## 📷 界面预览
+
+| 首页 | 睡眠记录 | 能量驿站 |
+| :---: | :---: | :---: |
+| ![首页](./docs/screenshots/home.png) | ![睡眠记录](./docs/screenshots/record.png) | ![能量驿站](./docs/screenshots/energy.png) |
+| **作息打卡** | **睡眠看板** | **助眠计时** |
+| ![作息打卡](./docs/screenshots/routine.png) | ![睡眠看板](./docs/screenshots/dashboard.png) | ![助眠计时](./docs/screenshots/timer.png) |
 
 ---
 
 ## 🧩 产品矩阵
 
-| 产品 | 定位 | 状态 |
-|---|---|---|
-| ① **安心眠** | 个人端睡眠健康管理（记录 / 打卡 / 看板 / 计时器），长期合规壁垒，单独推进 | ✅ MVP-1 已发布形态 |
-| ② **倦怠雷达** | 企业端员工倦怠风险预警（问卷 + 热力图 + 预警闭环），出收入现金牛 | 🔜 需等保 + DPA 后立项 |
-| ③ **能量驿站** | 个人端数据资产可视化（能量 / 等级 / 账本），养数据飞轮 | ✅ 已落地（本地模式） |
+| 产品         | 定位                                        | 状态               |
+| ---------- | ----------------------------------------- | ---------------- |
+| ① **安心眠**  | 个人端睡眠健康管理（记录 / 打卡 / 看板 / 计时器），长期合规壁垒，单独推进 | ✅ MVP-1 已发布形态    |
+| ② **倦怠雷达** | 企业端员工倦怠风险预警（问卷 + 热力图 + 预警闭环），出收入现金牛       | 🔜 需等保 + DPA 后立项 |
+| ③ **能量驿站** | 个人端数据资产可视化（能量 / 等级 / 账本），养数据飞轮            | ✅ 已落地（本地模式）      |
 
 **闭环逻辑**：个人养数据 → 匿名聚合 → 企业出收入 → 反哺个人 / 加固壁垒。
 
@@ -53,11 +65,13 @@
 ## 🚀 快速开始
 
 ### 小程序前端（微信开发者工具）
+
 1. 用微信开发者工具打开本仓库根目录。
 2. 在 `project.config.json` 填入你的小程序 AppID（当前为 `wxe32f899ba0d86bf3`，请替换为你自己的）。
 3. 编译预览即可运行；默认 **本地模式**，数据存本机。
 
 ### 后端（本地验证）
+
 ```bash
 cd server
 cp .env.example .env        # 本地测试可保持 DEV_MODE=true（允许 devPhone 旁路登录）
@@ -67,10 +81,13 @@ npm start                  # 默认 http://localhost:3000
 ```
 
 ### 连回真后端（前端切换）
+
 改 `config/compliance.js`：
+
 ```js
 BACKEND_SYNC: { enabled: true, apiBase: 'https://你的域名' }
 ```
+
 并在微信后台「服务器域名 → request 合法域名」加入该域名。
 
 ---
@@ -110,13 +127,13 @@ BACKEND_SYNC: { enabled: true, apiBase: 'https://你的域名' }
 
 ## 🗺 开发路线
 
-| 阶段 | 范围 | 状态 |
-|---|---|---|
-| Phase 0 | 合规基座（协议 / 弹窗 / 审核 / 开关） | ✅ 已完成 |
-| Phase 1 | ③ 能量驿站 + ① 安心眠增强 | ✅ 已完成 |
-| Phase 1.5 | 生成式 AI 睡眠助手 | 🔜 算法备案后开放（占位） |
-| Phase 2 | ② 倦怠雷达（企业端） | 🔜 需立项 / 等保 |
-| Phase 3 | 跨设备同步 / 数据汇聚 | 🔜 需立项 |
+| 阶段        | 范围                      | 状态             |
+| --------- | ----------------------- | -------------- |
+| Phase 0   | 合规基座（协议 / 弹窗 / 审核 / 开关） | ✅ 已完成          |
+| Phase 1   | ③ 能量驿站 + ① 安心眠增强        | ✅ 已完成          |
+| Phase 1.5 | 生成式 AI 睡眠助手             | 🔜 算法备案后开放（占位） |
+| Phase 2   | ② 倦怠雷达（企业端）             | 🔜 需立项 / 等保    |
+| Phase 3   | 跨设备同步 / 数据汇聚            | 🔜 需立项         |
 
 ---
 
