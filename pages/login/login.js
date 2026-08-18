@@ -15,6 +15,28 @@ Page({
     this.refreshStatus()
   },
 
+  onUnload() {
+    if (this._backTimer) clearTimeout(this._backTimer)
+    if (this._loginTimer) clearTimeout(this._loginTimer)
+  },
+
+  // 安全返回：延迟返回前校验页面是否仍在栈中，避免 routeDone webviewId 丢失报错
+  safeBack(delay) {
+    const self = this
+    if (this._backTimer) clearTimeout(this._backTimer)
+    this._backTimer = setTimeout(function () {
+      self._backTimer = null
+      const pages = getCurrentPages()
+      // 仅当 login 仍在栈顶（未被用户手动返回）时才 navigateBack
+      if (pages.length && pages[pages.length - 1].route === 'pages/login/login') {
+        wx.navigateBack()
+      } else if (pages.length === 0) {
+        // 极端情况：栈为空时直接重启到首页
+        wx.reLaunch({ url: '/pages/index/index' })
+      }
+    }, delay || 800)
+  },
+
   refreshStatus() {
     const phone = wx.getStorageSync('user_phone') || ''
     const loggedIn = !!wx.getStorageSync('user_logged')
@@ -68,7 +90,7 @@ Page({
       if (pullRes && pullRes.ok && pullRes.sync) applySync(pullRes.sync)
       wx.hideLoading()
       wx.showToast({ title: '登录成功' })
-      setTimeout(function () { wx.navigateBack() }, 800)
+      self.safeBack(800)
     }).catch(function (err) {
       wx.hideLoading()
       wx.showToast({ title: (err && err.message) || '登录失败', icon: 'none' })
@@ -83,10 +105,10 @@ Page({
     wx.setStorageSync('user_phone', '')
     wx.setStorageSync('user_local', true)
     wx.setStorageSync('user_logged', true)
-    setTimeout(function () {
+    this._loginTimer = setTimeout(function () {
       wx.hideLoading()
       wx.showToast({ title: '已进入本地模式' })
-      setTimeout(function () { wx.navigateBack() }, 800)
+      self.safeBack(800)
     }, 300)
   },
 

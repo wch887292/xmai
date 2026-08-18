@@ -52,7 +52,7 @@ node server.js      # 生产模式（DEV_MODE=false）
    ```
 3. 在控制台「云托管 → 新建服务」，服务类型选 **Web 服务**，监听端口填 `3000`，上传本 `server/` 目录（已含 Dockerfile，平台会自动构建镜像）。
 4. 在服务「环境变量」中配置（**不要写进代码**）：
-   - `WECHAT_APPID` = `wxe32f899ba0d86bf3`
+   - `WECHAT_APPID` = `你的小程序AppID`（形如 `wx` 开头的一串字符，勿提交真实值）
    - `WECHAT_SECRET` = 你的小程序密钥（建议先在微信后台重置一个全新值）
    - `DEV_MODE` = `false`（务必关闭，否则任何人可伪造登录）
    - `DATA_DIR` = `/app/data`，并为该目录**挂载持久化存储卷**（保证数据不随实例回收丢失；生产建议改用云数据库）。

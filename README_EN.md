@@ -61,7 +61,7 @@
 ### Mini-program frontend (WeChat DevTools)
 
 1. Open the repo root with WeChat DevTools.
-2. Fill in your mini-program AppID in `project.config.json` (currently `wxe32f899ba0d86bf3` — replace with your own).
+2. Fill in your mini-program AppID in `project.config.json` (e.g. a string starting with `wx`; the repo does not store a real AppID).
 3. Compile and preview; defaults to **local mode**, data stored on device.
 
 ### Backend (local verification)

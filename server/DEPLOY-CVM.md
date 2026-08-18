@@ -93,7 +93,7 @@ curl -X POST localhost:3000/api/auth/phone-login -H 'Content-Type: application/j
 ```bash
 docker build -t xingmian-server .
 docker run -d --name xm -p 3000:3000 \
-  -e WECHAT_APPID=wxe32f899ba0d86bf3 \
+  -e WECHAT_APPID=wx0000000000000000 \   # 占位示例：替换为你自己的 AppID
   -e WECHAT_SECRET=<真实密钥> \
   -e DEV_MODE=false \
   -v xm-data:/app/data \

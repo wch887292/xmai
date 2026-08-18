@@ -41,7 +41,7 @@ The Energy Station quantifies your sleep logs and check-ins into "data energy" a
 ### Q: How do I run the mini-program?
 
 1. Open the repository root with **WeChat DevTools**.
-2. Fill in your own mini-program AppID in `project.config.json` (the placeholder is `wxe32f899ba0d86bf3`).
+2. Fill in your own mini-program AppID in `project.config.json` (e.g. a string starting with `wx`; the repo does not store a real AppID).
 3. Compile and preview. It defaults to **local mode** (data stored on device, no network needed).
 
 ### Q: How do I run the backend locally?

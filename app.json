@@ -31,7 +31,6 @@
     ]
   },
   "style": "v2",
-  "lazyCodeLoading": "requiredComponents",
   "__usePrivacyCheck__": true,
   "sitemapLocation": "sitemap.json"
 }
